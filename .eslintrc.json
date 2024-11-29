@@ -1,0 +1,71 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "react-app",
+    "plugin:react/jsx-runtime",
+    "prettier",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": { "project": true, "tsconfigRootDir": "./" },
+  "plugins": ["@typescript-eslint", "custom-rules"],
+  "root": true,
+  "ignorePatterns": ["dist"],
+  "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "custom-rules/props-name-interface": "error",
+    "custom-rules/interface-props-unique": "error",
+    "custom-rules/props-rules": "error",
+    "react/self-closing-comp": ["error", { "component": true, "html": true }],
+    "@typescript-eslint/member-ordering": [
+      "error",
+      {
+        "default": {
+          "optionalityOrder": "required-first"
+        }
+      }
+    ],
+    "@typescript-eslint/no-restricted-imports": [
+      2,
+      {
+        "paths": [
+          {
+            "name": "react-redux",
+            "importNames": ["useSelector", "useStore", "useDispatch"],
+            "message": "Please use pre-typed versions from `src/app/hooks.ts` instead."
+          }
+        ]
+      }
+    ],
+    "import/no-named-as-default": "off",
+    "import/order": [
+      2,
+      {
+        "groups": ["external", "internal", "sibling"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      }
+    }
+  },
+  "overrides": [
+    { "files": ["*.{c,m,}{t,j}s", "*.{t,j}sx"] },
+    { "files": ["*{test,spec}.{t,j}s?(x)"], "env": { "jest": true } }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["vitest/globals"],
+    "composite": true,
+    "baseUrl": "./src/",
+    "paths": {
+      "@/*": ["*"],
+      "@app/*": ["app/*"],
+      "@features/*": ["features/*"],
+      "@components": ["components/index.ts"],
+      "@providers": ["providers/index.ts"],
+      "@hooks": ["hooks/index.ts"],
+      "@pages": ["pages/index.ts"],
+      "@utils": ["utils/index.ts"],
+      "@assets/*": ["assets/*"]
+    }
+  },
+  "include": ["src/**/*", "eslint-rules/**/*", "vite.config.ts", "eslint-custom-rules"]
+}
